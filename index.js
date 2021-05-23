@@ -21,6 +21,58 @@ var colors = {
 }
 
 
+var styles = {
+    table: {
+        border: "1px solid #ccc",
+        borderCollapse: "collapse",
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        tableLayout: "collapse",
+        th: {
+            fontSize: "18px",
+        },
+        tr: {
+            border: "1px solid #ddd",
+            padding: ".35rem"
+        },
+        tableTh: {
+            padding: ".625em",
+            textAlign: "center"
+        },
+        tableTd: {
+            padding: ".625em",
+            textAlign: "center"
+        }
+    },
+    navbar: {
+        navLogo: {
+            flex: 1,
+            width: '120px',
+        },
+        navImg: {
+            width: 100 + "%"
+        },
+        nav: {
+            display: "flex",
+            alignItems: "center",
+            fontSize: "18px",
+            background: "rgb(248, 246, 246)",
+            padding: "20px"
+        },
+        linkItem: {
+            display: "flex",
+            marginLeft: "50px"
+        },
+        link: {
+            marginRight: "20px",
+            textDecoration: "none",
+            color: "black"
+        }
+    }
+}
+
+
 function itemColor(item) {
     item.forEach((it) => {
         it.style.color = colors.default
@@ -35,6 +87,7 @@ function color() {
     var stopColor = document.querySelectorAll('.i-bg-stop')
     var waitColor = document.querySelectorAll('.i-bg-wait')
     var heavenColor = document.querySelectorAll('.i-bg-heaven')
+
 
     defaultColor.forEach((def) => {
         def.style.background = colors.default
@@ -69,35 +122,6 @@ function color() {
 
         itemColor(document.querySelectorAll('a'))
     })
-}
-
-
-
-
-var styles = {
-    table: {
-        border: "1px solid #ccc",
-        borderCollapse: "collapse",
-        margin: 0,
-        padding: 0,
-        width: '100%',
-        tableLayout: "collapse",
-        th: {
-            fontSize: "18px",
-        },
-        tr: {
-            border: "1px solid #ddd",
-            padding: ".35rem"
-        },
-        tableTh: {
-            padding: ".625em",
-            textAlign: "center"
-        },
-        tableTd: {
-            padding: ".625em",
-            textAlign: "center"
-        }
-    }
 }
 
 
@@ -480,7 +504,7 @@ class specialPaddingStyles {
 }
 
 function container() {
-    var container = document.querySelectorAll('div.i-container')
+    var container = document.querySelectorAll('.i-container')
 
     container.forEach(function(containerSec) {
         containerSec.style.width = 90 + '%'
@@ -607,6 +631,39 @@ function table() {
     })
 }
 
+
+function navbar() {
+    var nav = document.querySelectorAll('.i-nav.navbar')
+    var navLogo = document.querySelectorAll(".i-nav-logo")
+    var img = document.querySelectorAll('.i-nav-logo.img')
+    var li = document.querySelectorAll('.i-link-item')
+    var a = document.querySelectorAll('a')
+    
+    nav.forEach(function(navtag) {
+        navtag.style.display = styles.navbar.nav.display
+        navtag.style.alignItems = styles.navbar.nav.alignItems
+        navtag.style.fontSize = styles.navbar.nav.fontSize
+        navtag.style.padding = styles.navbar.nav.padding
+
+        navLogo.forEach(function(logo) {
+            logo.style.flex = styles.navbar.navLogo.flex
+            logo.style.width = styles.navbar.navLogo.width
+
+            img.forEach(function(image){
+                image.style.width = styles.navbar.navImg.width
+            })
+        })
+        li.forEach(function(item){
+            item.style.display = styles.navbar.linkItem.display
+        })
+        a.forEach(function(navLink){
+            navLink.style.marginRight = styles.navbar.link.marginRight
+            navLink.style.textDecoration = styles.navbar.link.textDecoration
+            navLink.style.color = styles.navbar.link.color
+        })
+    })
+}
+
 color()
 container()
 text()
@@ -631,3 +688,4 @@ marginStyles.marginRight()
 marginStyles.margin()
 
 table()
+navbar()
