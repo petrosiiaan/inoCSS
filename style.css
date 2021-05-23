@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.i-nav-logo {
+    flex: 1;
+}
+
+.i-nav.navbar {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    background: rgb(238, 238, 238);
+    padding: 20px;
+}
+
+.i-link-item {
+    display: flex;
+    margin-left: 50px;
+}
+
+.i-link-item > a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black ;
+}

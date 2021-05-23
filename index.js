@@ -1,8 +1,12 @@
 document.body.style.fontFamily = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif" 
+document.body.style.margin = 0;
+document.body.style.padding = 0;
+document.body.style.boxSizing = 0
 
 var colors = {
     default: '#ffffff',
     black: '#000000',
+    darkenBlack: "#1D1E22",
     next: '#50c878',
     stop: '#ed2939',
     wait: '#ffbb00',
@@ -14,6 +18,110 @@ var colors = {
         wait: '#dba100',
         heaven: '#0b449c'
     }
+}
+
+
+function itemColor(item) {
+    item.forEach((it) => {
+        it.style.color = colors.default
+    })
+}
+
+
+function color() {
+    var defaultColor = document.querySelectorAll('.i-bg-def')
+    var nextColor = document.querySelectorAll('.i-bg-next')
+    var darkenBlackColor = document.querySelectorAll('.i-bg-darken-black')
+    var stopColor = document.querySelectorAll('.i-bg-stop')
+    var waitColor = document.querySelectorAll('.i-bg-wait')
+    var heavenColor = document.querySelectorAll('.i-bg-heaven')
+
+    defaultColor.forEach((def) => {
+        def.style.background = colors.default
+    })
+    nextColor.forEach((next) => {
+        next.style.background = colors.next
+        next.style.color = colors.default
+
+        itemColor(document.querySelectorAll('a'))
+    })
+    darkenBlackColor.forEach((darken) => {
+        darken.style.background = colors.darkenBlack
+        darken.style.color = colors.default
+
+        itemColor(document.querySelectorAll('a'))
+    })
+    stopColor.forEach((stop) => {
+        stop.style.background = colors.stop
+        stop.style.color = colors.default
+
+        itemColor(document.querySelectorAll('a'))
+    })
+    waitColor.forEach((wait) => {
+        wait.style.background = colors.wait
+        wait.style.color = colors.default
+
+        itemColor(document.querySelectorAll('a'))
+    })
+    heavenColor.forEach((heaven) => {
+        heaven.style.background = colors.heaven
+        heaven.style.color = colors.default
+
+        itemColor(document.querySelectorAll('a'))
+    })
+}
+
+
+
+
+var styles = {
+    table: {
+        border: "1px solid #ccc",
+        borderCollapse: "collapse",
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        tableLayout: "collapse",
+        th: {
+            fontSize: "18px",
+        },
+        tr: {
+            border: "1px solid #ddd",
+            padding: ".35rem"
+        },
+        tableTh: {
+            padding: ".625em",
+            textAlign: "center"
+        },
+        tableTd: {
+            padding: ".625em",
+            textAlign: "center"
+        }
+    }
+}
+
+
+function calculateMargin(el) {
+    el.forEach(function(element) {
+        if(element.classList.contains('m-1')) {
+            element.style.margin = '10px'
+        }
+        else if(element.classList.contains('m-2')) {
+            element.style.margin = '20px'
+        }
+        else if(element.classList.contains('m-3')) {
+            element.style.margin = '30px'
+        }
+        else if(element.classList.contains('m-4')) {
+            element.style.margin = '40px'
+        }
+        else if(element.classList.contains('m-5')) {
+            element.style.margin = '50px'
+        }
+        else {
+            return;
+        }
+    })
 }
 
 
@@ -104,6 +212,30 @@ function calculateMarginRight(el) {
         }
         else if(element.classList.contains('mr-5')) {
             element.style.marginRight = '50px'
+        }
+        else {
+            return;
+        }
+    })
+}
+
+
+function calculatePadding(el) {
+    el.forEach(function(element) {
+        if(element.classList.contains('p-1')) {
+            element.style.padding = '10px'
+        }
+        else if(element.classList.contains('p-2')) {
+            element.style.padding = '20px'
+        }
+        else if(element.classList.contains('p-3')) {
+            element.style.padding = '30px'
+        }
+        else if(element.classList.contains('p-4')) {
+            element.style.padding = '40px'
+        }
+        else if(element.classList.contains('p-5')) {
+            element.style.padding = '50px'
         }
         else {
             return;
@@ -210,6 +342,19 @@ function calculatePaddingRight(el) {
 
 class specialMarginStyles {
     //margins
+    margin() {
+        var elementOne = document.querySelectorAll('.m-1')
+        var elementTwo = document.querySelectorAll('.m-2')
+        var elementThree = document.querySelectorAll('.m-3')
+        var elementFour = document.querySelectorAll('.m-4')
+        var elementFive = document.querySelectorAll('.m-5')
+
+        calculateMargin(elementOne)
+        calculateMargin(elementTwo)
+        calculateMargin(elementThree)
+        calculateMargin(elementFour)
+        calculateMargin(elementFive)
+    }
     marginTop() {
         var elementOne = document.querySelectorAll('.mt-1')
         var elementTwo = document.querySelectorAll('.mt-2')
@@ -267,6 +412,19 @@ class specialMarginStyles {
 
 class specialPaddingStyles {
     //paddings
+    padding() {
+        var elementOne = document.querySelectorAll('.p-1')
+        var elementTwo = document.querySelectorAll('.p-2')
+        var elementThree = document.querySelectorAll('.p-3')
+        var elementFour = document.querySelectorAll('.p-4')
+        var elementFive = document.querySelectorAll('.p-5')
+
+        calculatePadding(elementOne)
+        calculatePadding(elementTwo)
+        calculatePadding(elementThree)
+        calculatePadding(elementFour)
+        calculatePadding(elementFive)
+    }
     paddingTop() {
         var elementOne = document.querySelectorAll('.pt-1')
         var elementTwo = document.querySelectorAll('.pt-2')
@@ -406,6 +564,50 @@ function button() {
     })
 }
 
+
+function table() {
+    var table = document.querySelectorAll('.table') 
+
+    table.forEach(function(tb) {
+        if(tb.nodeName === "TABLE") {
+            tb.style.border = styles.table.border,
+            tb.style.margin = styles.table.margin
+            tb.style.borderCollapse = styles.table.borderCollapse
+            tb.style.tableLayout = styles.table.tableLayout
+            tb.style.width = styles.table.width
+
+            var th = document.querySelectorAll("th")
+            var tr = document.querySelectorAll('tr')
+            var td = document.querySelectorAll('td')
+
+            th.forEach(function(tableTh) {
+                tableTh.style.fontSize = styles.table.th.fontSize
+                tableTh.style.padding = styles.table.tableTh.padding
+                tableTh.style.textAlign = styles.table.tableTh.textAlign
+            })
+
+            tr.forEach(function(tableTr) {
+                tableTr.style.border = styles.table.tr.border
+                tableTr.style.padding = styles.table.tr.padding
+
+                if(tableTr.classList.contains('i-tr-dark')) {
+                    tableTr.style.background = colors.darkenBlack
+                    tableTr.style.color = colors.default
+                }
+            })
+            
+            td.forEach(function(tableTd) {
+                tableTd.style.padding = styles.table.tableTd.padding
+                tableTd.style.textAlign = styles.table.tableTd.textAlign
+            })
+        }
+        else {
+            return
+        }
+    })
+}
+
+color()
 container()
 text()
 h1Title()
@@ -413,6 +615,8 @@ button()
 
 const paddingStyles = new specialPaddingStyles()
 
+
+paddingStyles.padding()
 paddingStyles.paddingTop()
 paddingStyles.paddingBottom()
 paddingStyles.paddingLeft()
@@ -424,3 +628,6 @@ marginStyles.marginTop()
 marginStyles.marginBottom()
 marginStyles.marginLeft()
 marginStyles.marginRight()
+marginStyles.margin()
+
+table()
